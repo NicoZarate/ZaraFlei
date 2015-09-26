@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    div.caja
+        h2 #{id}
+        form(name="add-comment", method="post")
+            label Nombre
+            input(type="text", name="nombre", required="required")
+            label Mensaje
+            textarea(name="mensaje", required="required")
+            input(type="submit", value="Enviar")
+
+    div.caja.comentarios
+        ul
+            if comments
+                each comment in comments
+                    li #[p #[strong #{comment.author}]]       
+                       #[p #{comment.message}]
+            else
+                h4 No hay comentarios sobre este producto
